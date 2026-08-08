@@ -1,3 +1,4 @@
+// src/pages/Home.jsx
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { StarBackground } from "@/components/StarBackground";
 import { Navbar } from "@/components/Navbar";
@@ -7,10 +8,11 @@ import { SkillsSection } from "@/components/SkillsSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
+import { AIChat } from "@/components/AIChat";
 
 export const Home = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden" style={{ background: "#090909", color: "#C1CFC1" }}>
       <ThemeToggle />
       <StarBackground />
       <Navbar />
@@ -24,6 +26,7 @@ export const Home = () => {
       </main>
 
       <Footer />
+      <AIChat />
     </div>
   );
 };

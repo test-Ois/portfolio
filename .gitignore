@@ -1,4 +1,8 @@
+# Environment variables
 .env
+.env.local
+.env.*.local
+
+# Dependencies & Build outputs
 node_modules
-dist    
-node_modules
+dist

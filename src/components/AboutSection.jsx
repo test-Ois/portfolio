@@ -1,97 +1,95 @@
 // src/components/AboutSection.jsx
 import { Briefcase, Code, User } from "lucide-react";
-import { motion } from "framer-motion";
 import { Reveal } from "./Reveal";
+
+const cards = [
+  {
+    Icon: Code,
+    title: "Full Stack AI Development",
+    body: "Building production AI-integrated web applications with React, Next.js, Node.js, Express, and modern DBs.",
+  },
+  {
+    Icon: User,
+    title: "RAG & LLM Integration",
+    body: "Developing RAG pipelines using Qdrant vector database, multi-provider LLM routing (Groq, NVIDIA, Cerebras, Gemini, OpenAI), and SSE streaming.",
+  },
+  {
+    Icon: Briefcase,
+    title: "System Design & Architecture",
+    body: "Designing scalable REST APIs, secure JWT/Firebase authentication, and production-ready system architectures.",
+  },
+];
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="py-24 px-4 relative">
+    <section id="about" className="py-28 px-4 relative overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute top-1/2 left-0 w-80 h-80 rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(130,84,238,0.1), transparent 70%)", filter: "blur(60px)", transform: "translateY(-50%)" }}
+      />
+
       <Reveal className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center tracking-tight">
-          About <span className="text-primary"> Me</span>
+        {/* Section label */}
+        <div className="flex justify-center mb-4">
+          <span className="section-label">About Me</span>
+        </div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-14 text-center tracking-tight text-white">
+          Who I <span style={{ background: "linear-gradient(135deg, #8254EE, #00C2FF)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Am</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-left tracking-tight">
-              Passionate Web Developer & AI Enthusiast
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+          {/* Left text */}
+          <div className="space-y-6 text-left">
+            <h3 className="text-2xl font-bold text-white tracking-tight">
+              Passionate Full Stack AI Engineer
             </h3>
 
-            <p className="text-muted-foreground text-left font-sans leading-relaxed">
-              Full Stack Engineer with 1+ years of experience building scalable
-              applications using Next.js, React, Node.js, and the MERN stack.
-              Focused on performance, clean architecture, and real-world
-              solutions.
+            <p className="leading-relaxed" style={{ color: "#82717B" }}>
+              Full Stack AI Engineer with{" "}
+              <span style={{ color: "#C1CFC1" }}>6+ months of experience</span> building production
+              AI-integrated web applications combining React/Next.js frontends with Node.js/Express backends,
+              multi-provider LLM integration, and RAG pipelines.
             </p>
 
-            <p className="text-muted-foreground text-left font-sans leading-relaxed">
-              Currently developing AI-powered applications and production-ready
-              systems while expanding my expertise in system design, cloud
-              technologies, and software engineering.
+            <p className="leading-relaxed" style={{ color: "#82717B" }}>
+              Experienced in designing{" "}
+              <span style={{ color: "#8254EE", fontWeight: 500 }}>real-time streaming interfaces (SSE)</span>,{" "}
+              <span style={{ color: "#00C2FF", fontWeight: 500 }}>Qdrant vector databases</span>, and secure REST APIs
+              while pursuing B.Tech in Computer Science Engineering at Chandigarh University.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-start">
-              <a href="#contact" className="cosmic-button text-center font-sans">
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <a href="#contact" className="cosmic-button text-center">
                 Get In Touch
               </a>
-
               <a
                 href="https://drive.google.com/drive/u/0/folders/1WayKbomGqVUlmhQbi9Y2GgXN-Q2V1IDL"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300 text-center font-sans font-medium"
+                target="_blank" rel="noopener noreferrer"
+                className="ghost-button text-center"
               >
                 Download CV
               </a>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6">
-            {/* Card 1: Full Stack Development */}
-            <div className="bg-[#0f1219]/40 border border-white/5 backdrop-blur-md rounded-2xl p-6 shadow-xl transition-all duration-300 hover:scale-[1.02] hover:border-[#8b5cf6]/30 hover:shadow-[0_4px_24px_rgba(139,92,246,0.1)]">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Code className="h-6 w-6 text-primary" />
+          {/* Right cards */}
+          <div className="grid grid-cols-1 gap-5">
+            {cards.map(({ Icon, title, body }, i) => (
+              <div
+                key={i}
+                className="glass-card glass-card-hover p-6 flex items-start gap-4 group"
+              >
+                <div className="p-3 rounded-xl shrink-0 transition-all duration-300 group-hover:scale-110"
+                  style={{ background: "rgba(130,84,238,0.12)", border: "1px solid rgba(130,84,238,0.2)" }}
+                >
+                  <Icon className="h-5 w-5" style={{ color: "#8254EE" }} />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-bold text-lg tracking-tight"> Full Stack Development</h4>
-                  <p className="text-muted-foreground font-sans text-sm mt-1 leading-relaxed">
-                    Building scalable web applications with Next.js, React, Node.js, and MongoDB.
-                  </p>
+                  <h4 className="font-bold text-base text-white mb-1">{title}</h4>
+                  <p className="text-sm leading-relaxed" style={{ color: "#82717B" }}>{body}</p>
                 </div>
               </div>
-            </div>
-
-            {/* Card 2: AI-Powered Solutions */}
-            <div className="bg-[#0f1219]/40 border border-white/5 backdrop-blur-md rounded-2xl p-6 shadow-xl transition-all duration-300 hover:scale-[1.02] hover:border-[#8b5cf6]/30 hover:shadow-[0_4px_24px_rgba(139,92,246,0.1)]">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <User className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-bold text-lg tracking-tight">AI-Powered Solutions</h4>
-                  <p className="text-muted-foreground font-sans text-sm mt-1 leading-relaxed">
-                    Developing intelligent applications using OpenAI, Gemini, and modern ML/LLM integrations.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3: System Design */}
-            <div className="bg-[#0f1219]/40 border border-white/5 backdrop-blur-md rounded-2xl p-6 shadow-xl transition-all duration-300 hover:scale-[1.02] hover:border-[#8b5cf6]/30 hover:shadow-[0_4px_24px_rgba(139,92,246,0.1)]">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Briefcase className="h-6 w-6 text-primary" />
-                </div>
-
-                <div className="text-left">
-                  <h4 className="font-bold text-lg tracking-tight">System Design</h4>
-                  <p className="text-muted-foreground font-sans text-sm mt-1 leading-relaxed">
-                    Designing clean architectures, REST APIs, and production-ready systems.
-                  </p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </Reveal>
